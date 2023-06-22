@@ -83,3 +83,36 @@ sudo rm -f packages-microsoft-prod.deb
 
 sudo apt-get update
 sudo apt-get upgrade -y
+
+
+Installing NVIDIA GRID Drivers on Ubuntu
+
+Before installing the PCoIP Graphics Agent, you must install the correct NVIDIA drivers for your system. For current version information, see Linux System Requirements.
+
+    Install tools required to install the NVIDIA drivers:
+
+    $ sudo apt install build-essential
+
+    Disable the Nouveau video driver (two commands):
+
+    $ echo 'blacklist nouveau' | sudo tee -a /etc/modprobe.d/blacklist.conf
+
+    $ sudo reboot
+
+    Install the NVIDIA driver:
+
+    $ sudo ./NVIDIA-Linux-x86_64-xxx.xx-grid.run
+
+    Where xxx.xx is the NVIDIA driver version shown in Linux System Requirements.
+
+    Respond to the installer prompts as follows:
+        Accept the EULA
+        Say no to installing 32-bit binaries
+        Say no to modifying the x.org file
+
+    Verify the NVIDIA installation:
+
+    nvidia-smi
+
+    If the installation was successful, you will see your video card in the response.
+
